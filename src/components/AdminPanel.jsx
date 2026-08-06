@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Shield, PlusCircle, Trash2, Users, Flag, User, AlertCircle, CheckCircle2, RefreshCw } from "lucide-react";
 import { API } from "../config";
+import { API } from "../api";
 
 export const AdminPanel = () => {
   const { token } = useContext(AuthContext);
