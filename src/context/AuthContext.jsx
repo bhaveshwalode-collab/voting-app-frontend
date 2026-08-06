@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   // Fetch current user profile if token exists
   const fetchProfile = async (authToken) => {
     try {
-      const res = await fetch("/api/users/profile", {
+      const res = await fetch(`${API}/api/users/profile`, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (aadharCardNumber, password) => {
     try {
-      const res = await fetch("/api/users/login", {
+      const res = await fetch(`${API}/api/users/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ aadharCardNumber, password }),
@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (userData) => {
     try {
-      const res = await fetch("/api/users/signup", {
+      const res = await fetch(`${API}/api/users/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),

@@ -8,7 +8,7 @@ export const Results = () => {
   const fetchResults = async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/candidates/results");
+      const res = await fetch(`${API}/api/candidates/results`);
       if (res.ok) {
         const text = await res.text();
         const data = text ? JSON.parse(text) : [];

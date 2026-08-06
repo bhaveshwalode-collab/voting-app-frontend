@@ -15,7 +15,7 @@ export const Profile = () => {
     setMessage({ text: "", type: "" });
 
     try {
-      const res = await fetch("/api/users/password", {
+      const res = await fetch(`${API}/api/users/password`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

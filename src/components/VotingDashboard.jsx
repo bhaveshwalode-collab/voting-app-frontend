@@ -23,7 +23,7 @@ export const VotingDashboard = () => {
   const fetchCandidates = async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/candidates", {
+      const res = await fetch(`${API}/api/candidates`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) {
@@ -49,7 +49,7 @@ export const VotingDashboard = () => {
     setMessage({ text: "", type: "" });
 
     try {
-      const res = await fetch(`/api/candidates/vote/${selectedCandidate._id}`, {
+      const res = await fetch(`${API}/api/candidates/vote/${selectedCandidate._id}`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
       });

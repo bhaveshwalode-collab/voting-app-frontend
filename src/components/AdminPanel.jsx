@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Shield, PlusCircle, Trash2, Users, Flag, User, AlertCircle, CheckCircle2, RefreshCw } from "lucide-react";
+import { API } from "../config";
 
 export const AdminPanel = () => {
   const { token } = useContext(AuthContext);
@@ -29,7 +30,7 @@ export const AdminPanel = () => {
   const fetchCandidates = async () => {
     setLoadingCandidates(true);
     try {
-      const res = await fetch("/api/candidates", {
+      const res = await fetch(`${API}/api/candidates`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) {
@@ -46,7 +47,7 @@ export const AdminPanel = () => {
   const fetchUsers = async () => {
     setLoadingUsers(true);
     try {
-      const res = await fetch("/api/users", {
+      const res = await fetch(`${API}/api/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) {
@@ -74,7 +75,7 @@ export const AdminPanel = () => {
     setMessage({ text: "", type: "" });
 
     try {
-      const res = await fetch("/api/candidates", {
+      const res = await fetch(`${API}/api/candidates`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -104,7 +105,7 @@ export const AdminPanel = () => {
     if (!window.confirm(`Are you sure you want to delete candidate "${candidateName}"?`)) return;
 
     try {
-      const res = await fetch(`/api/candidates/${id}`, {
+      const res = await fetch(`${API}/api/candidates/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
