@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Vote, CheckCircle2, AlertTriangle, Search, Flag, User, Sparkles, Check, RefreshCw } from "lucide-react";
-
+import { API } from "../config";
 export const VotingDashboard = () => {
   const { user, token, refreshProfile } = useContext(AuthContext);
   const [candidates, setCandidates] = useState([]);

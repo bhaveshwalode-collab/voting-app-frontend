@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { User, Mail, Phone, MapPin, CreditCard, Lock, CheckCircle2, Shield, AlertCircle, Key } from "lucide-react";
-
+import { API } from "../config";
 export const Profile = () => {
   const { user, token } = useContext(AuthContext);
   const [currentPassword, setCurrentPassword] = useState("");

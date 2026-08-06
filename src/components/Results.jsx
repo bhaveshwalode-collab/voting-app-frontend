@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BarChart3, Trophy, Crown, RefreshCw, Flag, Award, TrendingUp } from "lucide-react";
-
+import { API } from "../config";
 export const Results = () => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
