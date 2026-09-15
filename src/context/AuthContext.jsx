@@ -55,18 +55,16 @@ export const AuthProvider = ({ children }) => {
       const data = await safeParseJSON(res);
       if (!res.ok) {
         throw new Error(
-          data.message ||
-            (res.status >= 500
-              ? "Server error. Please make sure the backend server (npm run dev) is running."
-              : "Login failed")
+          data.message || "Login failed"
         );
       }
       localStorage.setItem("token", data.token);
       setToken(data.token);
       return data;
     } catch (err) {
+      console.error("Login Error:", err);
       if (err.name === "TypeError") {
-        throw new Error("Unable to connect to backend server. Please make sure 'npm run dev' is running.");
+        throw new Error("Unable to connect to backend server. Render free instance may be sleeping — please wait 30 seconds and try again.");
       }
       throw err;
     }
@@ -82,18 +80,16 @@ export const AuthProvider = ({ children }) => {
       const data = await safeParseJSON(res);
       if (!res.ok) {
         throw new Error(
-          data.message ||
-            (res.status >= 500
-              ? "Server error. Please make sure MongoDB is connected and backend server (npm run dev) is running."
-              : "Signup failed")
+          data.message || "Signup failed"
         );
       }
       localStorage.setItem("token", data.token);
       setToken(data.token);
       return data;
     } catch (err) {
+      console.error("Signup Error:", err);
       if (err.name === "TypeError") {
-        throw new Error("Unable to connect to backend server. Please make sure 'npm run dev' is running.");
+        throw new Error("Unable to connect to backend server. Render free instance may be sleeping — please wait 30 seconds and try again.");
       }
       throw err;
     }
