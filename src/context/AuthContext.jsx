@@ -54,9 +54,7 @@ export const AuthProvider = ({ children }) => {
       });
       const data = await safeParseJSON(res);
       if (!res.ok) {
-        throw new Error(
-          data.message || "Login failed"
-        );
+        throw new Error(data.message || "Login failed");
       }
       localStorage.setItem("token", data.token);
       setToken(data.token);
@@ -64,7 +62,9 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       console.error("Login Error:", err);
       if (err.name === "TypeError") {
-        throw new Error("Unable to connect to backend server. Render free instance may be sleeping — please wait 30 seconds and try again.");
+        throw new Error(
+          `Connection failed (${err.message}). If Avast/Antivirus Web Shield or Brave Shields is active, please temporarily disable HTTPS scanning.`
+        );
       }
       throw err;
     }
@@ -79,9 +79,7 @@ export const AuthProvider = ({ children }) => {
       });
       const data = await safeParseJSON(res);
       if (!res.ok) {
-        throw new Error(
-          data.message || "Signup failed"
-        );
+        throw new Error(data.message || "Signup failed");
       }
       localStorage.setItem("token", data.token);
       setToken(data.token);
@@ -89,7 +87,9 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       console.error("Signup Error:", err);
       if (err.name === "TypeError") {
-        throw new Error("Unable to connect to backend server. Render free instance may be sleeping — please wait 30 seconds and try again.");
+        throw new Error(
+          `Connection failed (${err.message}). If Avast/Antivirus Web Shield or Brave Shields is active, please temporarily disable HTTPS scanning.`
+        );
       }
       throw err;
     }
